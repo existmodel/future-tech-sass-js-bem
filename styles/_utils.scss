@@ -1,0 +1,24 @@
+@use "helpers" as *;
+.container {
+    // четкая ширина контентного контейнера
+    max-width: calc(var(--container-widht) + var(--container-padding-x) * 2);
+    // центрирование элемента по горизонтали
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+    @include visually-hidden;
+}
+
+.hidden-mobile {
+    @include mobile {
+        display: none !important;
+    }
+}
+
+.visible-mobile {
+    @include mobile-above {
+        display: none !important;
+    }
+}
