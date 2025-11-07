@@ -34,8 +34,7 @@ class Header {
   onBurgerButtonClick = () => {
     // вызваем метод classList.toogle для переключения
     // Метод .toggle() делает то же самое что if else — автоматически переключает класс:
-    // •	если класса нет — добавит;
-    // •	если есть — уберёт.
+    // •	если класса нет — добавит;•	если есть — уберёт.
     this.burgerButtonElement.classList.toggle(this.stateClasses.isActive);
     this.overlayElement.classList.toggle(this.stateClasses.isActive);
     document.documentElement.classList.toggle(this.stateClasses.isLock);
