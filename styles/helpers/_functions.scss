@@ -9,15 +9,22 @@
 }
 
 @function fluid($max: 100, $min: 10) {
+    // Задаются границы экранов
     $maxViewportWidth: 1920;
     $minViewportWidth: 390;
-
+    // Перевод значений из px → rem
+    //  Деление на 16 нужно, потому что 1 rem = 16 px (по стандарту браузера).
+    // То есть всё переводится в rem, чтобы работать с относительными единицами.
     $maxSize: math.div($max, 16);
     $minSize: math.div($min, 16);
     $maxWidth: math.div($maxViewportWidth, 16);
     $minWidth: math.div($minViewportWidth, 16);
 
+    // наклон
+    // Это разница значений, делённая на разницу ширин — то есть, насколько размер должен увеличиваться при увеличении ширины на 1 единицу.
+    //  math.div() — безопасное деление в Sass
     $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    // классическая формула прямой линии: y = kx + b
     $yAxisIntersection: -$minWidth * $slope + $minSize;
 
     @return clamp(#{$minSize * 1rem}, #{$yAxisIntersection * 1rem} + #{$slope * 100vw}, #{$maxSize * 1rem});
